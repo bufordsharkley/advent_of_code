@@ -11,21 +11,17 @@ def ribbon(length, width, height):
     return shortest + bow
 
 
+def sum_all_boxes(boxes, func):
+    return sum(func(*dims_from_box(box)) for box in boxes)
+
+
+def dims_from_box(boxline):
+    return tuple(int(x) for x in boxline.split('x'))
+
+
 def main():
-    print surface_area(2, 3, 4)
-    print surface_area(1, 1, 10)
-    total = 0
-    for line in open('/tmp/input2.txt'):
-        dims = [int(x) for x in line.split('x')]
-        total += surface_area(*dims)
-    print total
-    print ribbon(2, 3, 4)
-    print ribbon(1, 1, 10)
-    total = 0
-    for line in open('/tmp/input2.txt'):
-        dims = [int(x) for x in line.split('x')]
-        total += ribbon(*dims)
-    print total
+    print sum_all_boxes(open('/tmp/input2.txt').readlines(), surface_area)
+    print sum_all_boxes(open('/tmp/input2.txt').readlines(), ribbon)
 
 if __name__ == "__main__":
     main()

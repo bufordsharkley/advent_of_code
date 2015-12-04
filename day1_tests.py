@@ -2,6 +2,7 @@ import unittest
 
 import day1
 
+
 class FloorTests(unittest.TestCase):
 
     def test_expected_floor_reached(self):

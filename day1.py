@@ -14,18 +14,7 @@ def first_to_basement(string):
 
 
 def main():
-    print elevator('(())')
-    print elevator('()()')
-    print elevator('(((')
-    print elevator('(()(()(')
-    print elevator('))(((((')
-    print elevator('())')
-    print elevator('))(')
-    print elevator(')))')
-    print elevator(')())())')
     print elevator(inputtext)
-    print first_to_basement(')')
-    print first_to_basement('()())')
     print first_to_basement(inputtext)
 
 if __name__ == "__main__":
