@@ -2,8 +2,8 @@ import collections
 
 
 def main():
-    print num_houses(open('/tmp/input3.txt').read())
-    print num_houses_with_robo(open('/tmp/input3.txt').read())
+    print num_houses(open('input/input3.txt').read())
+    print num_houses_with_robo(open('input/input3.txt').read())
 
 
 def num_houses_with_robo(string):

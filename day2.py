@@ -20,8 +20,8 @@ def dims_from_box(boxline):
 
 
 def main():
-    print sum_all_boxes(open('/tmp/input2.txt').readlines(), surface_area)
-    print sum_all_boxes(open('/tmp/input2.txt').readlines(), ribbon)
+    print sum_all_boxes(open('input/input2.txt').readlines(), surface_area)
+    print sum_all_boxes(open('input/input2.txt').readlines(), ribbon)
 
 if __name__ == "__main__":
     main()

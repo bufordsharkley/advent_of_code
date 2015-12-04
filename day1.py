@@ -3,7 +3,7 @@ def elevator(string):
     downs = string.count(')')
     return ups - downs
 
-inputtext = open('/tmp/input1.txt').read()
+inputtext = open('input/input1.txt').read()
 
 
 def first_to_basement(string):
