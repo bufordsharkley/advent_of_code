@@ -2,13 +2,7 @@ import collections
 
 
 def main():
-    print num_houses('>')
-    print num_houses('^>v<')
-    print num_houses('^v^v^v^v^v')
     print num_houses(open('/tmp/input3.txt').read())
-    print num_houses_with_robo('^v')
-    print num_houses_with_robo('^>v<')
-    print num_houses_with_robo('^v^v^v^v^v')
     print num_houses_with_robo(open('/tmp/input3.txt').read())
 
 
