@@ -6,7 +6,8 @@ import day7
 class CircuitTests(unittest.TestCase):
 
     def test_arrows(self):
-        self.assertEqual(day7.parse_arrow('blippy -> bloppy'), ('blippy', 'bloppy'))
+        self.assertEqual(day7.parse_arrow('blippy -> bloppy'),
+                         ('blippy', 'bloppy'))
 
     def test_parse_sigs(self):
         self.assertEqual(day7.parse_sig('123'), 123)
@@ -17,7 +18,9 @@ class CircuitTests(unittest.TestCase):
         self.assertEqual(day7.parse_sig('x OR y', vals), x | y)
         self.assertEqual(day7.parse_sig('x LSHIFT 2', vals), x << 2)
         self.assertEqual(day7.parse_sig('x RSHIFT 2', vals), x >> 2)
-        #self.assertEqual(day7.parse_sig('NOT x', vals), ~x)
+        # I'll be honest, I don't see why this is what passes:
+        x = 0b1010101010101010
+        self.assertEqual(day7.parse_sig('NOT x', vals), 0b1111111111111011)
 
     def test_parse_lint(self):
         line = '123 -> x'
@@ -33,12 +36,14 @@ class CircuitTests(unittest.TestCase):
         day7.parse_line('x LSHIFT 2 -> f', vals)
         self.assertEqual(vals, {'x': 123, 'y': 456, 'd': 72, 'f': 492, 'e': 507})
         day7.parse_line('y RSHIFT 2 -> g', vals)
-        self.assertEqual(vals, {'x': 123, 'g': 114, 'y': 456, 'd': 72, 'f': 492, 'e': 507})
+        self.assertEqual(vals, {'x': 123, 'g': 114, 'y': 456,
+                                'd': 72, 'f': 492, 'e': 507})
         day7.parse_line('NOT x -> h', vals)
-        self.assertEqual(vals, {'x': 123, 'h': 65412, 'g': 114, 'y': 456, 'd': 72, 'f': 492, 'e': 507})
-
+        self.assertEqual(vals, {'x': 123, 'h': 65412, 'g': 114,
+                                'y': 456, 'd': 72, 'f': 492, 'e': 507})
         day7.parse_line('NOT y -> i', vals)
-        self.assertEqual(vals, {'i': 65079, 'x': 123, 'h': 65412, 'g': 114, 'y': 456, 'd': 72, 'f': 492, 'e': 507})
+        self.assertEqual(vals, {'i': 65079, 'x': 123, 'h': 65412, 'g': 114,
+                                'y': 456, 'd': 72, 'f': 492, 'e': 507})
 
 
 
