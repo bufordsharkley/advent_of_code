@@ -10,7 +10,7 @@ def resolve_xy(string):
 
 
 def raw():
-    return {(ii, jj): 0 for ii in range(0, 1000) for jj  in range(0, 1000)}
+    return {(ii, jj): 0 for ii in range(0, 1000) for jj in range(0, 1000)}
 
 
 def process_instruct(grid, command, light, elvish=False):
@@ -40,7 +40,7 @@ def process_instruct(grid, command, light, elvish=False):
 
 def process_instruct_line(grid, line, elvish=False):
     command, a, b, c = line.rsplit(' ', 3)
-    through = ' '.join([a,b,c])
+    through = ' '.join([a, b, c])
     for light in resolve_through(through):
         process_instruct(grid, command, light, elvish=elvish)
 

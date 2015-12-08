@@ -2,8 +2,8 @@ import unittest
 
 import day8
 
-class DayEightTests(unittest.TestCase):
 
+class DayEightTests(unittest.TestCase):
 
     def test_through_resolve(self):
         self.assertEqual(day8.charlen(r'""'), 2)

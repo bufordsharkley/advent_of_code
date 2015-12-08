@@ -34,7 +34,8 @@ class CircuitTests(unittest.TestCase):
         day7.parse_line('x OR y -> e', vals)
         self.assertEqual(vals, {'x': 123, 'y': 456, 'd': 72, 'e': 507})
         day7.parse_line('x LSHIFT 2 -> f', vals)
-        self.assertEqual(vals, {'x': 123, 'y': 456, 'd': 72, 'f': 492, 'e': 507})
+        self.assertEqual(vals, {'x': 123, 'y': 456, 'd': 72,
+                                'f': 492, 'e': 507})
         day7.parse_line('y RSHIFT 2 -> g', vals)
         self.assertEqual(vals, {'x': 123, 'g': 114, 'y': 456,
                                 'd': 72, 'f': 492, 'e': 507})
@@ -44,8 +45,6 @@ class CircuitTests(unittest.TestCase):
         day7.parse_line('NOT y -> i', vals)
         self.assertEqual(vals, {'i': 65079, 'x': 123, 'h': 65412, 'g': 114,
                                 'y': 456, 'd': 72, 'f': 492, 'e': 507})
-
-
 
 if __name__ == "__main__":
     unittest.main()

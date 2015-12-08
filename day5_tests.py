@@ -3,7 +3,7 @@ import unittest
 import day5
 
 
-class Tests(unittest.TestCase):
+class Day5Tests(unittest.TestCase):
 
     def test_is_nice(self):
         self.assertEqual(day5.is_vowel('aei'), True)
@@ -25,15 +25,20 @@ class Tests(unittest.TestCase):
         self.assertEqual(day5.is_nice('haegwjzuvuyypxyu'), False)
         self.assertEqual(day5.is_nice('dvszwmarrgswjxmb'), False)
 
-    def test_is_nice_2(self):
-        self.assertEqual(day5.is_twice_again('xyxy'), True)
-        self.assertEqual(day5.is_twice_again('aabcdefgaa'), True)
-        self.assertEqual(day5.is_twice_again('aaa'), False)
-        #Jself.assertEqual(day5.is_vowel('aei'), True)
-        #sJelf.assertEqual(day5.not_those('acpx'), True)
-        #self.assertEqual(day5.is_nice('dvszwmarrgswjxmb'), False)
-
-
+    def test_is_supernice(self):
+        self.assertEqual(day5.is_two_letters_twice('xyxy'), True)
+        self.assertEqual(day5.is_two_letters_twice('aabcdefgaa'), True)
+        self.assertEqual(day5.is_two_letters_twice('aaa'), False)
+        self.assertEqual(day5.is_two_letters_twice('rxexcbwhiywwwwnu'), True)
+        self.assertEqual(day5.is_sandwich('xyx'), True)
+        self.assertEqual(day5.is_sandwich('xyyx'), False)
+        self.assertEqual(day5.is_sandwich('abcdefeghi'), True)
+        self.assertEqual(day5.is_sandwich('efe'), True)
+        self.assertEqual(day5.is_sandwich('aaa'), True)
+        self.assertEqual(day5.is_super_nice('qjhvhtzxzqqjkmpb'), True)
+        self.assertEqual(day5.is_super_nice('xxyxx'), True)
+        self.assertEqual(day5.is_super_nice('uurcxstgmygtbstg'), False)
+        self.assertEqual(day5.is_super_nice('ieodomkazucvgmuy'), False)
 
 if __name__ == "__main__":
     unittest.main()

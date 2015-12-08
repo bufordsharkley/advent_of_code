@@ -2,21 +2,16 @@ import unittest
 
 import day6
 
-NINE = set()
-for ii in range(0, 3):
-    for jj in range(0, 3):
-        NINE.add((ii, jj))
 
-class Niceness2Tests(unittest.TestCase):
-
+class Day6Tests(unittest.TestCase):
 
     def test_through_resolve(self):
+        nine = set((ii, jj) for ii in range(0, 3) for jj in range(0, 3))
         self.assertEqual(day6.resolve_xy('0,0'), (0, 0))
-        self.assertEqual(set(day6.resolve_through('0,0 through 2,2')),
-                NINE)
+        self.assertEqual(set(day6.resolve_through('0,0 through 2,2')), nine)
 
     def test_init(self):
-        self.assertEqual(len(day6.raw()), 1000*1000)
+        self.assertEqual(len(day6.raw()), 1000000)
 
     def test_instruction(self):
         grid = day6.raw()
