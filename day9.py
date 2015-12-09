@@ -23,7 +23,7 @@ def cities_from_route(route):
 
 
 def all_routes(cities):
-    return list(itertools.permutations(cities, len(cities)))
+    return itertools.permutations(cities, len(cities))
 
 
 def score_route(route, routes):

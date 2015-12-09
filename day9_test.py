@@ -20,7 +20,7 @@ Dublin to Belfast = 141"""
                                  ('Dublin', 'Belfast'): 141})
         cities = day9.cities_from_route(route)
         self.assertEqual(cities, set(['London', 'Dublin', 'Belfast']))
-        self.assertEqual(len(day9.all_routes(cities)), 3*2*1)
+        self.assertEqual(len(list(day9.all_routes(cities))), 3*2*1)
         self.assertEqual(day9.score_route(
             ['Dublin', 'London', 'Belfast'],
             route), 982)
