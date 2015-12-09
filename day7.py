@@ -1,3 +1,4 @@
+import copy
 import random
 
 
@@ -30,7 +31,7 @@ def resolve(string, vals):
         pass
     try:
         return vals[string]
-    except:
+    except KeyError:
         raise NotReady
 
 
@@ -64,14 +65,21 @@ if __name__ == "__main__":
     # this is apparently non-deterministic.
     # I get different answers at different times.
     # luckily, it worked for me the first time I ran it...
+    lines = set([x.strip() for x in open('input/input7.txt').readlines()])
     vals = {}
-    stored_lines = set([x.strip()
-                        for x in open('input/input7.txt').readlines()])
+    stored_lines = copy.deepcopy(lines)
     run_it(stored_lines, vals)
     answer = vals['a']
     print answer
     vals = {'b': answer}
-    stored_lines = clean(set([x.strip()
-                              for x in open('input/input7.txt').readlines()]))
+    stored_lines = clean(lines)
     run_it(stored_lines, vals)
     print vals['a']
+    filename = '/tmp/{}.txt'.format(vals['a'])
+    import os
+    if os.path.exists(filename):
+        print 'exists!'
+    else:
+        import json
+        with open(filename, 'w') as f:
+            f.write(json.dumps(vals))
