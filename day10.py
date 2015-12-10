@@ -1,8 +1,5 @@
 def looknsay(numstring):
-    sofar = ''
-    remainder = numstring
     parts = []
-    total = 0
     index = 0
     length = len(numstring)
     while index < length:
