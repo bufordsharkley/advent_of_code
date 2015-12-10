@@ -1,25 +1,27 @@
-def looknsay(num):
+def looknsay(numstring):
     sofar = ''
-    remainder = num
-    while remainder:
-        n, count, remainder = inarow(remainder)
-        starter = str(count) + n
-        sofar += starter
-    return sofar
-
-def inarow(num):
-    first = num[0]
-    count = 1
-    for next_ in num[1:]:
-        if next_ == first:
+    remainder = numstring
+    parts = []
+    total = 0
+    index = 0
+    length = len(numstring)
+    while index < length:
+        first = numstring[index]
+        count = 1
+        while index + count < length:
+            next_ = numstring[index + count]
+            if next_ != first:
+                break
             count += 1
-        else:
-            break
-    return first, count, num[count:]
+        parts.append(str(count))
+        parts.append(first)
+        index += count
+    return ''.join(parts)
+
 
 if __name__ == "__main__":
-    start = '1113222113'
+    numstring = '1113222113'
     for ii in range(50):
-        start = looknsay(int(start))
-    print len(start)
+        numstring = looknsay(numstring)
+        print ii + 1, len(numstring)
 
