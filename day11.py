@@ -17,7 +17,7 @@ def increment(string):
             break
         index += 1
     for ii in range(length - index):
-        resp.append(string[length - index - ii - 1])
+        resp.append(string[length - index - ii - 1])  # i hate this so much. this is what i do when i'm tired.
     return ''.join(reversed(resp))
 
 
