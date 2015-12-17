@@ -48,7 +48,8 @@ def parse_line(line, vals):
 def clean(set_of_lines):
     # all assignments with ints at the left should be excluded
     return set(line for line in set_of_lines
-               if not isinstance(parse_arrow(line)[0], int))
+               if not isinstance(parse_arrow(line)[0], int)
+               and not line.endswith('-> b'))
 
 
 def run_it(stored_lines, vals):
@@ -75,11 +76,3 @@ if __name__ == "__main__":
     stored_lines = clean(lines)
     run_it(stored_lines, vals)
     print vals['a']
-    filename = '/tmp/{}.txt'.format(vals['a'])
-    import os
-    if os.path.exists(filename):
-        print 'exists!'
-    else:
-        import json
-        with open(filename, 'w') as f:
-            f.write(json.dumps(vals))
