@@ -1,21 +1,64 @@
-def elevator(string):
-    ups = string.count('(')
-    downs = string.count(')')
-    return ups - downs
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
 
-inputtext = open('input/input1.txt').read()
+# For reference-- not actually used in code:
+CARDINALS = {'NORTH': 0, 'SOUTH': 2, 'EAST': 1, 'WEST': 3}
 
 
-def first_to_basement(string):
-    for ii, _ in enumerate(string):
-        current = elevator(string[:ii+1])
-        if current == -1:
-            return ii + 1
+def parse_move(move):
+  return move[0], int(move[1:])
+
+
+def update_direction(direction, turn):
+  assert turn in 'RL'
+  turn = 1 if turn == 'R' else -1
+  return (direction + turn) % 4
+
+
+def calculate_grid_offset(string):
+  direction = 0  # North
+  direction_sums = {k: 0 for k in range(4)}
+  for move in (x for x in string.split(', ')):
+    direction = update_direction(direction, move[0])
+    direction_sums[direction] += int(move[1:])
+  up = direction_sums[0] - direction_sums[2]
+  right = direction_sums[1] - direction_sums[3]
+  return abs(up) + abs(right)
+
+
+def find_first_location_visited_twice(string):
+  direction = 0  # North
+  location = (0, 0)
+  visited_locations = set()
+  for move in (x for x in string.split(', ')):
+    direction = update_direction(direction, move[0])
+    sign = 1 if direction < 2 else -1
+    length = int(move[1:])
+    while length:
+      if direction % 2:
+        location = location[0], location[1] + sign
+      else:
+        location = location[0] + sign, location[1]
+      if location in visited_locations:
+        return location
+      visited_locations.add(location)
+      length -= 1
 
 
 def main():
-    print elevator(inputtext)
-    print first_to_basement(inputtext)
+  assert calculate_grid_offset('R2, L3') == 5
+  assert calculate_grid_offset('R2, R2, R2') == 2
+  assert calculate_grid_offset('R5, L5, R5, R3') == 12
+  assert find_first_location_visited_twice('R8, R4, R4, R8') == (0, 4)
+  input_data = open('input/1.txt').read()
+  answer_part_one = calculate_grid_offset(input_data)
+  answer_part_two = sum(find_first_location_visited_twice(input_data))
+  print(answer_part_one)
+  print(answer_part_two)
+  # Allow for refactoring with continued correct answers.
+  assert answer_part_one == 353
+  assert answer_part_two == 152
 
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+  main()
