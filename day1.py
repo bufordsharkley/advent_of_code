@@ -12,8 +12,7 @@ def parse_move(move):
 
 def update_direction(direction, turn):
   assert turn in 'RL'
-  turn = 1 if turn == 'R' else -1
-  return (direction + turn) % 4
+  return (direction + (1 if turn == 'R' else -1)) % 4
 
 
 def calculate_grid_offset(string):
