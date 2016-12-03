@@ -1,7 +1,3 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 # For reference-- not actually used in code:
 CARDINALS = {'NORTH': 0, 'SOUTH': 2, 'EAST': 1, 'WEST': 3}
 
@@ -61,4 +57,4 @@ def main():
     assert answer_part_two == 152
 
 if __name__ == '__main__':
-  main()
+    main()
