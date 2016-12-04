@@ -1,4 +1,3 @@
-from __future__ import print_function
 import collections
 import itertools
 
@@ -19,7 +18,7 @@ def caesar(text):
     shift = get_sector_id(text) % 26
     # Filter out all non-letters, because why not
     return ''.join(chr(ord(letter) + shift if ord(letter) + shift <= ord('z')
-                   else ord(letter) + shift - 26)
+                       else ord(letter) + shift - 26)
                    for letter in text if letter.isalpha())
 
 
