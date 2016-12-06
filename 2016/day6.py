@@ -19,19 +19,14 @@ dvrsen
 enarar"""
 
 
-def columnize(rows):
-    return zip(*rows)
-
-
 def part_one(rows):
-    columns = columnize(rows)
-    return ''.join(collections.Counter(x).most_common(1)[0][0] for x in columns)
+    return ''.join(collections.Counter(x).most_common(1)[0][0]
+                   for x in zip(*rows))
 
 
 def part_two(rows):
-    columns = columnize(rows)
     return ''.join(collections.Counter(x).most_common(len(columns[0]))[-1][0]
-                   for x in columns)
+                   for x in zip(*rows))
 
 
 if __name__ == "__main__":
