@@ -25,7 +25,7 @@ def part_one(rows):
 
 
 def part_two(rows):
-    return ''.join(collections.Counter(x).most_common(len(columns[0]))[-1][0]
+    return ''.join(collections.Counter(x).most_common()[-1][0]
                    for x in zip(*rows))
 
 
