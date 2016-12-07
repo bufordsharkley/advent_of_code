@@ -35,7 +35,7 @@ def is_valid_two(string):
         all_abas.update(find_all_abas(outside))
     for inside in insides:
         all_babs.update(find_all_abas(inside))
-    return True if any(reverse(x) in all_babs for x in all_abas) else False
+    return True if set(reverse(x) for x in all_abas) & all_babs else False
 
 
 def reverse(x):
